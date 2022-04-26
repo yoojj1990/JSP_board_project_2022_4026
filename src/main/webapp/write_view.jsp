@@ -13,23 +13,23 @@
 		<form action="write.do" method="post">
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="bid"></td>
+				<td><input type="text" name="bid" size="80"></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="bname"></td>
+				<td><input type="text" name="bname" size="80"></td>
 			</tr>
 			<tr>
 				<td>글제목</td>
-				<td><input type="text" name="btitle"></td>
+				<td><input type="text" name="btitle" size="80"></td>
 			</tr>
 			<tr>
 				<td>글내용</td>
-				<td><textarea rows="10" cols="100"></textarea></td>
+				<td><textarea rows="10" cols="60"></textarea></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="글작성"></td>
-				<td><a href="list.do">글목록보기</a></td>
+				<td colspan="2" align="center"><input type="submit" value="글작성">&nbsp;&nbsp;&nbsp;
+				<a href="list.do">글목록보기</a></td>
 			</tr>
 		</form>
 	</table>
