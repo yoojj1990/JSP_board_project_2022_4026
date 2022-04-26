@@ -102,5 +102,64 @@ public void write(String bid, String bname, String btitle, String bcontent) {
 	
 		return dtos;
 	}
-
+	
+	
+	public BDto content_view(String strid) {
+		
+		BDto dto = null;
+		
+String sql = "SELECT * FROM jsp_board WHERE id=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;//sql 실행 객체
+		ResultSet rs = null;
+		
+		try {
+			Class.forName(driverName);//jdbc 드라이버 로딩
+			conn = DriverManager.getConnection(url, user, password);//DB 연동			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, strid);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String bid = rs.getString("bid");
+				String bname = rs.getString("bname");
+				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
+				int bhit = rs.getInt("bhit");
+				
+				dto = new BDto(bid, bname, btitle, bcontent, bhit);
+				
+			}
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}			
+		}
+		
+		
+		
+		return dto;
+	}
+	
+	
+	
+	
+	
 }
