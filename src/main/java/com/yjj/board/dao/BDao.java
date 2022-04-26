@@ -3,6 +3,10 @@ package com.yjj.board.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import com.yjj.board.dto.BDto;
 
 
 
@@ -43,11 +47,60 @@ public void write(String bid, String bname, String btitle, String bcontent) {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}			
-			
 		}
-		
 
-		
 	}
 	
+
+	public ArrayList<BDto> list() {
+	
+		ArrayList<BDto> dtos = new ArrayList<BDto>();
+		
+		
+		String sql = "SELECT * FROM jsp_board";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;//sql 실행 객체
+		ResultSet rs = null;
+		
+		try {
+			Class.forName(driverName);//jdbc 드라이버 로딩
+			conn = DriverManager.getConnection(url, user, password);//DB 연동			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String bid = rs.getString("bid");
+				String bname = rs.getString("bname");
+				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
+				int bhit = rs.getInt("bhit");
+				
+				BDto dto = new BDto(bid, bname, btitle, bcontent, bhit);
+				dtos.add(dto);
+			}
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}			
+		}
+	
+		return dtos;
+	}
+
 }

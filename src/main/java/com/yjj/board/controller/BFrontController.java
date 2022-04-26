@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yjj.board.command.BCommand;
-import com.yjj.board.command.BWriteCommand;
+import com.yjj.board.command.*;
+
 
 /**
  * Servlet implementation class BFrontController
@@ -57,11 +57,14 @@ public class BFrontController extends HttpServlet {
 		
 		if(com.equals("/list.do")) { //글 목록보기 요청
 			
+			command = new BListCommand(); // 업케스팅
+			command.execute(request, response);
+			
+			
+			
 			viewPage = "list.jsp";
 			
 		} else if(com.equals("/write_view.do")) { //글 내용보기 요청
-			
-			
 			
 			viewPage = "write_view.jsp";
 			
