@@ -49,12 +49,18 @@ public class BFrontController extends HttpServlet {
 		String conPath = request.getContextPath(); //context 경로만 가져오기
 		String com = uri.substring(conPath.length()); // 전체 url 에서 context 경로 길이만큼 빼기
 		
-		if(com.equals("/test.do")) {
+		if(com.equals("/list.do")) { //글 목록보기 요청
 			
-			request.setAttribute("id", "tiger");
 			
 			viewPage = "test.jsp";
-		} else if(com.equals("/delete.do")) {
+			
+		} else if(com.equals("/write_view.do")) { //글 내용보기 요청
+			
+		} else if(com.equals("/delete.do")) { //글 삭제 요청
+			
+		} else if(com.equals("/modfy.do")) { //글 수정 요청
+			
+		} else if(com.equals("/write.do")) { //글 쓰기 요청
 			
 		}
 		
