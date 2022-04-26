@@ -25,7 +25,7 @@
 			</tr>
 			<tr>
 				<td>글내용</td>
-				<td><textarea rows="10" cols="60"></textarea></td>
+				<td><textarea name="bcontent" rows="10" cols="60"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit" value="글작성">&nbsp;&nbsp;&nbsp;
