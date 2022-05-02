@@ -108,7 +108,7 @@ public void write(String bid, String bname, String btitle, String bcontent) {
 		
 		BDto dto = null;
 		
-String sql = "SELECT * FROM jsp_board WHERE id=?";
+		String sql = "SELECT * FROM jsp_board WHERE bid=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;//sql 실행 객체
