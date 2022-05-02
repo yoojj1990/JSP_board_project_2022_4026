@@ -11,7 +11,7 @@
 	<h2>자유게시판 글목록</h2>
 	<hr>
 	<table width='600' cellpadding='0' cellspacing='0' border='1'>
-		<tr allign='center' bgcolor='pink'>
+		<tr align='center' bgcolor='pink'>
 			<td><b>제 목</b></td>
 			<td><b>아이디</b></td>
 			<td><b>글쓴이</b></td>
@@ -23,9 +23,9 @@
 			<td>
 			<a href="content_view.do?bid=${dto.bid }">${dto.btitle }</a>
 			</td>
-			<td allign='center'>${dto.bid }</td>
-			<td allign='center'>${dto.bname }</td>
-			<td allign='center'>${dto.bhit }</td>
+			<td align='center'>${dto.bid }</td>
+			<td align='center'>${dto.bname }</td>
+			<td align='center'>${dto.bhit }</td>
 		</tr>
 		</c:forEach>
 		<tr>
