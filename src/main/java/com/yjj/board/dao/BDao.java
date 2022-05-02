@@ -198,7 +198,7 @@ public void write(String bid, String bname, String btitle, String bcontent) {
 	}
 	
 	
-	public int delete(String bid) {
+	public void delete(String bid) {
 		
 		int dbFlag = 0;
 		
@@ -217,12 +217,7 @@ public void write(String bid, String bname, String btitle, String bcontent) {
 			
 			dbFlag = pstmt.executeUpdate(); // 수정 성공이면 1반환, 실패면 다른값 반환
 			
-			if(dbFlag == 1) {
-				dbFlag = 1;
-			} else {
-				dbFlag = 0;
-			}
-		
+					
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -242,7 +237,7 @@ public void write(String bid, String bname, String btitle, String bcontent) {
 			
 		}
 		
-		return dbFlag; // 회원 삭제 성공시 1반환
+
 		
 	}
 	
