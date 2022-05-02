@@ -70,13 +70,17 @@ public class BFrontController extends HttpServlet {
 			
 		} else if(com.equals("/delete.do")) { //글 삭제 요청
 			
-//			command = new BDeleteCommand();
-//			command.execute(request, response);
+			command = new BDeleteCommand();
+			command.execute(request, response);
+			
+			viewPage = "list.do";
 			
 		} else if(com.equals("/modify.do")) { //글 수정 요청
 			
-//			command = new BModifyCommand();
-//			command.execute(request, response);
+			command = new BModifyCommand();
+			command.execute(request, response);
+			
+			viewPage = "list.do";
 			
 		} else if(com.equals("/write.do")) { //글 쓰기 요청
 			
@@ -96,6 +100,8 @@ public class BFrontController extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+		
+		
 		
 		
 	}

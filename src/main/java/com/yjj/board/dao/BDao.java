@@ -159,6 +159,92 @@ public void write(String bid, String bname, String btitle, String bcontent) {
 	}
 	
 	
+	public void modify(String bid, String bname, String btitle, String bcontent) {
+		
+		String sql = "UPDATE jsp_board SET bname = ?, btitle = ?, bcontent = ? WHERE bid = ?";
+		
+		int dbFlag = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;//sql 실행 객체
+		
+		try {
+			Class.forName(driverName);//jdbc 드라이버 로딩
+			conn = DriverManager.getConnection(url, user, password);//DB 연동			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bname);
+			pstmt.setString(2, btitle);
+			pstmt.setString(3, bcontent);
+			pstmt.setString(4, bid);
+			
+			dbFlag = pstmt.executeUpdate();//sql실행->실행 성공시 1 반환
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}			
+		}
+	}
+	
+	
+	public int delete(String bid) {
+		
+		int dbFlag = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;//sql 실행 객체
+		ResultSet rs = null;
+		
+		String sql = "DELETE FROM jsp_board WHERE bid=?";
+		
+		try {
+			Class.forName(driverName);//jdbc 드라이버 로딩
+			conn = DriverManager.getConnection(url, user, password);//DB 연동			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bid);
+			
+			dbFlag = pstmt.executeUpdate(); // 수정 성공이면 1반환, 실패면 다른값 반환
+			
+			if(dbFlag == 1) {
+				dbFlag = 1;
+			} else {
+				dbFlag = 0;
+			}
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}			
+			
+		}
+		
+		return dbFlag; // 회원 삭제 성공시 1반환
+		
+	}
 	
 	
 	

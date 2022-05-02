@@ -11,6 +11,7 @@
 	<hr>
 	<table width='600' cellpadding='0' cellspacing='0' border='1'>
 		<form action="modify.do" method="post">
+			<input type="hidden" name="bid" value="${content_view.bid }">
 			<tr>
 				<td>아이디</td>
 				<td>${content_view.bid }</td>
@@ -33,7 +34,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit" value="글수정">&nbsp;&nbsp;&nbsp;
-				<a href="delete.do">글삭제</a>&nbsp;&nbsp;&nbsp;
+				<a href="delete.do?bid=${content_view.bid }">글삭제</a>&nbsp;&nbsp;&nbsp;
 				<a href="list.do">글목록보기</a></td>
 			</tr>
 		</form>
